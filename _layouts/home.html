@@ -7,6 +7,7 @@ layout: default
 {% elsif site.paginate and site.paginate_path and paginator.page > 1 %}
   {% include back-link.html %}
 {% else %}
+
   <header class="site-masthead">
     {% include menu.html %}
     {% if site.title %}
@@ -21,8 +22,45 @@ layout: default
     {% endif %}
   </header>
 {% endif %}
+{% assign about = site.pages | where: "title","About" | first %}
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting" id="about" role="article" aria-label="Content">
 
-<main class="home" id="main" role="main" aria-label="Content">
+    {% if about.title != "" %}
+      <h1 class="post-title divided p-name" itemprop="name headline" id="about">
+        {{ about.title }}
+      </h1>
+    {% endif %}
+    <div class="post-content e-content" itemprop="articleBody">
+      {{ about.content }}
+    </div>
+  </article>
+
+  {% assign rule = site.pages | where: "title","Rule" | first %}
+
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting" id="rule" role="article" aria-label="Content">
+
+    {% if rule.title != "" %}
+      <h1 class="post-title divided p-name" itemprop="name headline">
+        {{ rule.title }}
+      </h1>
+    {% endif %}
+
+    <div class="post-content e-content" itemprop="articleBody">
+      {{ rule.content | markdownify }}
+    </div>
+
+  </article>
+
+
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting" id="main2" role="article" aria-label="Content">
+      <h1 class="post-title  p-name" itemprop="name headline">
+        <a href="">Join</a>
+      </h1>
+
+  </article>
+
+
+<!-- <main class="home" id="main" role="main" aria-label="Content">
 
   <h1 class="content-title divided">
     {% if site.paginate and site.paginate_path and paginator.page > 1 %}
@@ -69,4 +107,4 @@ layout: default
   {% endif %}
     
 
-</main>
+</main> -->
