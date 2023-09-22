@@ -1,196 +1,196 @@
----
-layout: page
-title: "Hitchens"
----
+# Kagami
 
-An inarguably well-designed [Jekyll](http://jekyllrb.com) theme by [Pat Dryburgh](https://patdryburgh.com).
+[![Build Status](https://travis-ci.org/kamikat/jekyll-theme-kagami.svg?branch=master)](https://travis-ci.org/kamikat/jekyll-theme-kagami)
+[![Gem Version](https://badge.fury.io/rb/jekyll-theme-kagami.svg)](https://badge.fury.io/rb/jekyll-theme-kagami)
 
-![Hitchens Preview](https://raw.githubusercontent.com/patdryburgh/hitchens/master/screenshot.png)
+Simple and clean theme for Jekyll and GitHub Pages.
 
-Undoubtably one of the great minds of our time, [Christopher Hitchens](https://en.wikipedia.org/wiki/Christopher_Hitchens) challenged his readers to think deeply on topics of politics, religion, war, and science. This Jekyll theme's design is inspired by the trade paperback version his book, [Arguably](https://en.wikipedia.org/wiki/Arguably), and is dedicated to his memory.
+![Screenshot](https://s2.banana.moe/docs/kagami-preview@2x.png)
 
-## Quick Start
+## Installation
 
-This theme is, itself, a Jekyll blog, meaning the code base you see has everything you need to run a Jekyll powered blog!
-
-To get started quickly, follow the instructions below:
-
-1. Click the `Fork` button at the top of [the repository](https://github.com/patdryburgh/hitchens/);
-2. Go to your forked repo's `Settings` screen;
-3. Scroll down to the `GitHub Pages` section;
-4. Under `Source`, select the `Master` branch;
-5. Hit `Save`.
-6. Follow [Jekyll's instructions to configure your new Jekyll site](https://jekyllrb.com/docs/configuration/).
-
-## Manual Installation
-
-If you've already created your Jekyll site or are comfortable with the command line, you can follow [Jekyll's Quickstart instructions](https://jekyllrb.com/docs/) add this line to your Jekyll site's `Gemfile`:
+Add this line to your Jekyll site's Gemfile:
 
 ```ruby
-gem "hitchens-theme"
+gem "jekyll-theme-kagami"
 ```
 
-And add the following lines to your Jekyll site's `_config.yml`:
+And add this line to your Jekyll site's `_config.yml`:
 
 ```yaml
-theme: hitchens-theme
+theme: jekyll-theme-kagami
 ```
 
-Depending on your [site's configuration](https://jekyllrb.com/docs/configuration/options/), you may also need to add:
-
-```yaml
-ignore_theme_config: true
-```
-
-And then on the command line, execute:
+And then execute:
 
     $ bundle
 
-Or install the theme yourself as:
+Or install it yourself as:
 
-    $ gem install hitchens-theme
+    $ gem install jekyll-theme-kagami
+
+### GitHub Pages
+
+Jekyll build is integrated with GitHub Pages with limited function. This section is intended for those who
+want to use the theme with GitHub Pages hosted sites.
+
+1. Download latest gem file from https://rubygems.org/gems/jekyll-theme-kagami
+2. Run `gem unpack [path-to-downloaded-gem-file] --target=.` on jekyll site project folder
+3. Delete the line `theme: ...` in `_config.yml`
+
+Zip archive downloaded from release page may not work because GitHub does not pack necessary files from submodules.
+
+Instruction 1 and 2 can also work when you decide to upgrade your installation.
 
 ## Usage
 
-### Home Layout
+### Social account links
 
-The `home` layout presents a list of articles ordered chronologically. The theme uses [Jekyll's built-in pagination](https://jekyllrb.com/docs/pagination/#enable-pagination) which can be configured in your `_config.yml` file.
+You can customize social account links by adding following lines to `_config.yml`
 
-The masthead of the home page is derived from the `title` and `description` set in your site's `_config.yml` file.
-
-#### Navigation
-
-To include a navigation menu in your site's masthead and footer:
-
-1. Create a `_data` directory in the root of your site.
-2. Add a `menu.yml` file to the `_data` directory.
-3. Use the following format to list your menu items:
-
-```
-- title: About
-  url: /about.html
-
-- title: Source
-  url: https://github.com/patdryburgh/hitchens
+```yaml
+github_username: my_github_username
+twitter_username: my_twitter_username
+instagram_username: my_instagram_username
 ```
 
-Be sure to start your `url`s with a `/`.
+You can customize footer by overriding `_includes/footer.html`.
 
-#### Pagination
+### Syntax highlighting
 
-To paginate your posts, add the following line to your site's `Gemfile`:
+Kagami support color schemes from [jekyll-pygments-themes](https://github.com/jwarby/jekyll-pygments-themes).
 
-```
-gem "jekyll-paginate"
-```
+Add the following lines to choose a color scheme:
 
-Then, add the following lines to your site's `_config.yml` file:
-
-```
-plugins:
-  - jekyll-paginate
-
-paginate: 20
-paginate_path: "/page/:num/"
+```yaml
+color_scheme: github
 ```
 
-You can set the `paginate` and `paginate_path` settings to whatever best suits you.
+### Comment service (Disqus or Gitalk)
 
-#### Excerpts
+Add the following lines to your Jekyll site to enable Disqus comment service:
 
-To show [excerpts](https://jekyllrb.com/docs/posts/#post-excerpts) of your blog posts on the home page, add the following settings to your site's `_config.yml` file:
-
-```
-show_excerpts: true
+```yaml
+disqus_shortname: my_disqus_shortname
 ```
 
-By default, excerpts that have more than 140 characters will be truncated to 20 words. In order to override the number of words you'd like to show for your excerpts, add the following setting to your site's `_config.yml` file:
+You can find out more about Disqus' shortnames [here](https://help.disqus.com/customer/portal/articles/466208).
 
-```
-excerpt_length: 20
-```
+For [Gitalk](https://github.com/gitalk/gitalk#options):
 
-To disable excerpt truncation entirely, simply set `excerpt_length` to `0` in your site's `_config.yml` file, like so:
-
-```
-excerpt_length: 0
-```
-
-If you do this, the theme will still respect Jekyll's `excerpt_separator` feature as [described in the Jekyll documentation](https://jekyllrb.com/docs/posts/#post-excerpts).
-
-
-#### Title-less Posts
-
-If you want to publish posts that don't have a title, add the following setting to the [front matter](https://jekyllrb.com/docs/frontmatter/) of the post:
-
-```
-title: ""
+```yaml
+gitalk:
+  id: <clientID>
+  secret: <clientSecret>
+  repo: <repo>
+  owner: <owner> # (optional) if not set, value of `github_username` will be used
+  admin: <admin> # (optional) if not set, value of `github_username` will be used
+  proxy: ...     # (optional)
 ```
 
-When you do this, the home page will display a truncated [excerpt](https://jekyllrb.com/docs/posts/#post-excerpts) of the first paragraph of your post.
+By default, comment service will only be enabled in production mode, set an environment `JEKYLL_ENV=production` for local test.
 
-Note that setting `excerpt_length` in your site's `_config.yml` file will set the length of _all_ excerpts, regardless of whether the post has a title or not. For posts with a title, the excerpt will appear under the title and slightly lighter. For title-less posts, the excerpt will appear as if it were a title.
+If you don't want to comments for particular posts you can disable that by adding `comments: false` to the post's YAML Front Matter.
 
-### Post Layout
+### Google Analytics
 
-A sparsely decorated layout designed to present long-form writing in a manner that's pleasing to read.
+To enable Google Anaytics, add the following lines to your Jekyll site:
 
-To use the post layout, add the following to your post's [front matter](https://jekyllrb.com/docs/frontmatter/):
-
-```
-layout: post
+```yaml
+google_analytics: UA-NNNNNNNN-N
 ```
 
-### Icons
+Google Analytics will only appear in production, i.e., `JEKYLL_ENV=production`
 
-The [JSON Feed spec](https://jsonfeed.org/version/1) states that feeds should include an icon. To add your icon, add the following line in your site's `_config.yml` file:
+### Navigation Bar
 
-```
-feed_icon: /assets/images/icon-512.png
-```
+Pages and posts can be registered as navigation item with following frontmatter:
 
-Then, replace the `/assets/images/icon-512.png` file with your own image.
-
-### Credits
-
-The theme credits that appear at the bottom of each page can be turned off by including the following line in your site's `_config.yml` file:
-
-```
-hide_credits: true
+```yaml
+navbar_title: Awesome Title # specifies the text to display as navigation item
 ```
 
-### Search
+Navigation items are ordered in alphabetical order by default in Jekyll. Adjust the order manually with a `position` value:
 
-The theme uses a [custom DuckDuckGo Search Form](https://ddg.patdryburgh.com) that can be turned off by including the following line in your site's `_config.yml` file: 
-
-```
-hide_search: true
+```yaml
+position: 999
 ```
 
-### Font
+### Tags and category
 
-I spent a good amount of time trying to identify the font used on the front cover of the trade paperback version of Arguably. Unfortunately, I failed to accurately identify the exact font used. If you happen to know what font is used on the book cover, I would appreciate you [letting me know](mailto:hello@patdryburgh.com) :)
+Layout file `post-list` supports filtering by tag or category. Create pages with following frontmatter will generate a filtered post list.
 
-The theme includes a version of [EB Garamond](https://fonts.google.com/specimen/EB+Garamond), designed by Georg Duffner and Octavio Pardo. It's the closest alternative I could come up with that included an open license to include with the theme.
+```yaml
+title: Title of Tag Page
+layout: post-list
+filter:
+  - by_tag: tagname
+```
 
-A [copy of the license](https://github.com/patdryburgh/hitchens/blob/master/assets/fonts/OFL.txt) has been included in the `assets` folder and must be included with any distributions of this theme that include the EB Garamond font files.
+To filter by both category and tags:
 
-## Contributing & Requesting Features
+```yaml
+filter:
+  - by_tag: tagname
+    by_category: category
+```
 
-Bug reports, feature requests, and pull requests are welcome on GitHub at [https://github.com/patdryburgh/hitchens](https://github.com/patdryburgh/hitchens).
+Results from multiple filters are combined (logical 'or') into the result.
 
-This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+A more flexible filter strategy is supported by supplying liquid expression to `by_expression` parameter in which post object can be referenced by the name `post`.
+
+### MathJax
+
+You can use MathJax with Kramdown's [built-in support](https://kramdown.gettalong.org/syntax.html#math-blocks).
+
+To enable [MathJax](https://www.mathjax.org/), add following lines to your site
+or post's front matter stuff:
+
+```yaml
+mathjax: true
+```
+
+### Mermaid
+
+To enable [mermaid](https://mermaid-js.github.io/mermaid/), add following line to
+the site configuration or post's front matter stuff:
+
+```yaml
+mermaid: true
+```
+
+Code blocks with `mermaid` language tag should be transformed into diagrams.
+
+### Use `.side-note` and `.retina2x`
+
+Taking advantages of [Block/span IAL](https://kramdown.gettalong.org/syntax.html#block-ials),
+Kagami supports extra elements in writing.
+
+Add `{:.side-note}` notation after a paragraph (in a new line just after paragraph WITHOUT extra line breaks)
+will style the paragraph as a sidenote. Sidenote will be pull to the left of
+the page and only be visible in desktop mode.
+
+Kagami is also optimized for high-res image display:
+
+```markdown
+![image@2x](path-to-image@2x.png){:.retina2x}
+```
+
+And the retina image will be scaled to half of it's original size in pixels.
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at <https://github.com/kamikat/jekyll-theme-kagami>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Development
 
 To set up your environment to develop this theme, run `bundle install`.
 
-The theme is setup just like a normal Jekyll site. To test the theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using the theme. Add pages, documents, data, etc. like normal to test the theme's contents. As you make modifications to the theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve -s example` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+
+When your theme is released, only the files in `_layouts`, `_includes`, and `_sass` tracked with Git will be released.
 
 ## License
 
-The code for this theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-The font, EB Garamond, is Copyright 2017 The EB Garamond Project Authors and licensed under the [SIL Open Font License Version 1.1](https://github.com/patdryburgh/hitchens/blob/master/assets/fonts/OFL.txt).
-
-Graphics are released to the public domain.
