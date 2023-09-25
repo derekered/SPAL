@@ -29,4 +29,4 @@ All members must meet the following criteria:
 2. [Invite](https://airtable.com/appC8JnbpRFWTOMs0/shrys9o6TSJqBaR7F) members to a performance at least once a year
 
 # Join
-If this sounds like something for you, we encourage you to [Join](https://airtable.com/appC8JnbpRFWTOMs0/shrTKwvEAxo5f1BEP). After you fill our the form and get approved, you'll be introduced to the group and start receiving invites to upcoming performances.  
+If this sounds like something for you, we encourage you to [Join](https://airtable.com/appC8JnbpRFWTOMs0/shrTKwvEAxo5f1BEP). After you fill out the form and get approved, you'll be introduced to the group and start receiving invites to upcoming performances.  
